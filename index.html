@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional portfolio for music business and graphic design">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Sayda</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #e9456b;
+            --color-primary-dark: #c82d54;
+            --color-secondary: #667eea;
+            --color-dark: #1a1a2e;
+            --color-darker: #16213e;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-bg-light: #f8f9fa;
+            --color-border: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background: #ffffff;
+        }
+
+        /* ===== HEADER / HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 140px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(233, 69, 96, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #e9456b 0%, #c82d54 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--color-dark);
+            transform: translateY(-3px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .about-text h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+        }
+
+        .about-text p {
+            color: var(--color-text-light);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .skill-item {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .skill-item i {
+            color: var(--color-primary);
+            font-size: 20px;
+        }
+
+        .about-image {
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        /* ===== PORTFOLIO SECTION ===== */
+        .portfolio {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .portfolio-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 1px solid var(--color-border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s;
+        }
+
+        .project-card:hover .project-image::before {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--color-dark);
+        }
+
+        .project-desc {
+            font-size: 14px;
+            color: var(--color-text-light);
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: var(--color-bg-light);
+            color: var(--color-text-light);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            border: 1px solid var(--color-border);
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 16px;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, #e9456b 0%, #c82d54 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0f0f1e;
+            color: #e0e0e0;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-section a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(233, 69, 96, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-primary);
+            transition: all 0.3s;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .social-links a:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+            /* padding-top: 20px; */
+            font-size: 14px;
+            color: #999;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--color-dark);
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .hero {
+                padding: 120px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .skills-list {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid,
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .contact-form {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Sayda</h1>
+        <p class="hero-subtitle">Digital marketing specialist and graphic designer focused on music, live events and visual communication</p>
+        <div class="hero-buttons">
+            <a href="#portfolio" class="btn btn-primary">Portfolio</a>
+            <a href="#contact" class="btn btn-secondary">Contact me</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== ABOUT SECTION ===== -->
+<section class="about" id="about">
+    <div class="container">
+        <h2 class="section-title">About me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Creando experiencias únicas</h2>
+                <p>Con más de [X] años de experiencia en la industria de eventos, música y diseño gráfico, he tenido el privilegio de trabajar con artistas, marcas y eventos que han dejado huella en la industria.</p>
+                <p>Mi enfoque combina creatividad con estrategia, asegurando que cada proyecto no solo sea visualmente impactante, sino que también alcance objetivos comerciales específicos.</p>
+            </div>
+            <img class="about-image" src="./about-me.jpeg" />
+        </div>
+    </div>
+</section>
+
+<!-- ===== PORTFOLIO SECTION ===== -->
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <h2 class="section-title">My experience</h2>
+
+        <div class="portfolio-category">
+            <h3 class="category-title">Working</h3>
+            <div class="category-grid">
+                <div class="project-card">
+                    <div class="project-image">🎪</div>
+                    <div class="project-info">
+                        <div class="project-title">BSH Electrodomésticos España, S.A.</div>
+                        <ul class="project-desc">
+                          <li>Edition and Production of high-quality digital assets for BSH brands.</li>
+                          <li>Implementation and editing of global content, intended for subsequent deployment across different countries.</li>
+                          <li>Implementation of international requests in the areas of Design and Web.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Adobe software</span>
+                            <span class="tag">Web Implementation</span>
+                            <span class="tag">Content creation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎤</div>
+                    <div class="project-info">
+                        <div class="project-title">GIMH</div>
+                        <ul class="project-desc">
+                          <li>Planning and management of Social Media campaigns and handling of print and digital design requests.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Social media</span>
+                            <span class="tag">SEM</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎸</div>
+                    <div class="project-info">
+                        <div class="project-title">Catering Festival Vive Latino</div>
+                        <ul class="project-desc"><li>Preparation of catering for artists and backstage organization.</li></ul>
+                        <div class="project-tags">
+                            <span class="tag">Production assistant</span>
+                            <span class="tag">Coordination</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎸</div>
+                    <div class="project-info">
+                        <div class="project-title">Athens National Auditorium & Lykofos Theater</div>
+                        <ul class="project-desc">
+                          <li>Customer service</li>
+                          <li>Ushering</li>
+                          <li>Event management</li>
+                          <li>Production assistant</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Production assistant</span>
+                            <span class="tag">Accommodation</span>
+                            <span class="tag">Social media</span>
+                            <span class="tag">Venue management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Music Business Categoría -->
+        <div class="portfolio-category">
+            <h3 class="category-title">Projects</h3>
+            <div class="category-grid">
+                <div class="project-card">
+                    <div class="project-image">💿</div>
+                    <div class="project-info">
+                        <div class="project-title">Primavera Sound Madrid IMB School Scholarship Winner</div>
+                        <div class="project-desc">To obtain this scholarship, I worked on a project that addresses the market demand for Asian music in Spain, creating a festival dedicated to Korean culture and developing the creative and organizational process.</div>
+                        <div class="project-tags">
+                            <span class="tag">Diseño</span>
+                            <span class="tag">Creatividad</span>
+                            <span class="tag">Digital</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📊</div>
+                    <div class="project-info">
+                        <div class="project-title">Marketing Challenge VI Edition @ Colegio Montessori</div>
+                        <div class="project-desc">Campaña integral de marketing digital para EP debut, manejo de redes sociales.</div>
+                        <div class="project-tags">
+                            <span class="tag">Marketing</span>
+                            <span class="tag">Social Media</span>
+                            <span class="tag">Estrategia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎧</div>
+                    <div class="project-info">
+                        <div class="project-title">Winner "2 minutos de cine" Zaragoza 2021</div>
+                        <div class="project-desc">Together with a classmate, I created a short film about the happiness found in everyday small moments, which was awarded first place in a competition organized by Zaragoza City Council.</div>
+                        <div class="project-tags">
+                            <span class="tag">Producción</span>
+                            <span class="tag">Coordinación</span>
+                            <span class="tag">Música</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎧</div>
+                    <div class="project-info">
+                        <div class="project-title">Winner 11th Pixenlaces en Breve Audiovisual Creation Contest</div>
+                        <div class="project-desc">First Place Winner in the annual CPIFP Los Enlaces Short Film Competition, Fiction category, with my short film ‘4 Días’.</div>
+                        <div class="project-tags">
+                            <span class="tag">Producción</span>
+                            <span class="tag">Coordinación</span>
+                            <span class="tag">Música</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎧</div>
+                    <div class="project-info">
+                        <div class="project-title">Workplace Safety in the Audiovisual Industry – Video Contest</div>
+                        <div class="project-desc">Created as a group project, the video won first prize by addressing safety and risk prevention in film sets and live audiovisual productions.</div>
+                        <div class="project-tags">
+                            <span class="tag">Producción</span>
+                            <span class="tag">Coordinación</span>
+                            <span class="tag">Música</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diseño Gráfico Categoría -->
+        <div class="portfolio-category">
+            <h3 class="category-title">🎨 Diseño Gráfico</h3>
+            <div class="category-grid">
+                <div class="project-card">
+                    <div class="project-image">🖼️</div>
+                    <div class="project-info">
+                        <div class="project-title">Identidad de Marca</div>
+                        <div class="project-desc">Diseño completo de identidad visual: logo, paleta de colores y guía de estilo.</div>
+                        <div class="project-tags">
+                            <span class="tag">Branding</span>
+                            <span class="tag">Identidad</span>
+                            <span class="tag">Logo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-info">
+                        <div class="project-title">Diseño de Campaña</div>
+                        <div class="project-desc">Materiales gráficos para campaña publicitaria: banners, flyers, posts para redes sociales.</div>
+                        <div class="project-tags">
+                            <span class="tag">Publicidad</span>
+                            <span class="tag">Diseño</span>
+                            <span class="tag">Digital</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📸</div>
+                    <div class="project-info">
+                        <div class="project-title">Dirección de Arte</div>
+                        <div class="project-desc">Dirección creativa de shoots fotográficos y videos, estética visual coherente.</div>
+                        <div class="project-tags">
+                            <span class="tag">Arte</span>
+                            <span class="tag">Creatividad</span>
+                            <span class="tag">Visual</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section class="contact" id="contact">
+    <div class="contact-content">
+        <h2>Get in touch</h2>
+        <p>Get in touch with me to discuss how can we create something extraordinary.</p>
+
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required placeholder="What's your project?">
+            </div>
+
+            <button type="submit" class="form-submit">
+              <span>Send mail</span>
+              <svg width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 7.00005L10.2 11.65C11.2667 12.45 12.7333 12.45 13.8 11.65L20 7" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+        </form>
+    </div>
+</section>
+
+<script>
+    // Form submission
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const subject = document.getElementById('subject').value;
+
+        const mailLink = `mailto:saydaaielrio@gmail.com?subject=${name}: ${subject}`;
+        window.open(mailLink, '_blank');
+
+        event.target.reset();
+    }
+
+    // Smooth scroll for better UX
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Add scroll animation for elements
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.project-card, .service-card, .testimonial-card').forEach(el => {
+        observer.observe(el);
+    });
+</script>
+
+<style>
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+</body>
+</html>
